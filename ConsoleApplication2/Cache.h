@@ -42,12 +42,13 @@ public:
 class Cache
 {
 private:
+	uint64_t capacity;
 	std::mutex m;
 	std::unordered_map<std::string, cached*> items;
 	std::list<std::string> keyList;
 
 public:
-	Cache();
+	Cache(uint64_t capacity);
 	~Cache();
 
 public:

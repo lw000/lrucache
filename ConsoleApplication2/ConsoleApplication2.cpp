@@ -43,7 +43,7 @@ public:
 
 int main()
 {
-	Cache cache;
+	Cache cache(100);
 	for (int i = 0; i < 30; i++) {
 		cache.Put(std::to_string(i), Item(i));
 	}

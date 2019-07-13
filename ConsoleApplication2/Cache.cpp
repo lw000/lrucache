@@ -8,8 +8,9 @@ enum class ALG {
 	LeastRecentlyUsed = 1,
 };
 
-Cache::Cache()
+Cache::Cache(uint64_t capacity)
 {
+	this->capacity = capacity;
 }
 
 Cache::~Cache()
