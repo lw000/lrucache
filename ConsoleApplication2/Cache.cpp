@@ -19,6 +19,8 @@ Cache::~Cache()
 	for (auto k : this->items) {
 		delete k.second;
 	}
+	this->items.clear();
+	this->keyList.clear();
 }
 
 std::vector<cached*> Cache::Get(const std::initializer_list<std::string>& keys) {
