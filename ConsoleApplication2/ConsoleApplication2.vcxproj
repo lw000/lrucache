@@ -91,10 +91,13 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>.;./glog;./gflags;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>glog/lib;gflags/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glogd.lib;gflags_static_debug.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -152,7 +155,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Cache.h" />
+    <ClInclude Include="Defer.h" />
+    <ClInclude Include="gflags\gflags\defines.h" />
+    <ClInclude Include="gflags\gflags\gflags.h" />
+    <ClInclude Include="gflags\gflags\gflags_completions.h" />
+    <ClInclude Include="gflags\gflags\gflags_declare.h" />
+    <ClInclude Include="gflags\gflags\gflags_gflags.h" />
+    <ClInclude Include="glog\glog\logging.h" />
+    <ClInclude Include="glog\glog\raw_logging.h" />
+    <ClInclude Include="glog\glog\stl_logging.h" />
+    <ClInclude Include="glog\glog\vlog_is_on.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="SignalHandler.h" />
+    <ClInclude Include="SingleFlight.h" />
+    <ClInclude Include="TaskQueue.h" />
+    <ClInclude Include="Ticker.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cache.cpp" />
@@ -163,6 +180,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SignalHandler.cpp" />
+    <ClCompile Include="SingleFlight.cpp" />
+    <ClCompile Include="TaskQueue.cpp" />
+    <ClCompile Include="Ticker.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

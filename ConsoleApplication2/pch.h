@@ -11,4 +11,18 @@
 
 // TODO: 添加要在此处预编译的标头
 
+#define GOOGLE_GLOG_DLL_DECL           // 使用静态glog库用这个
+#define GLOG_NO_ABBREVIATED_SEVERITIES // 没这个编译会出错,传说因为和Windows.h冲突
+
+
+//#ifdef __cplusplus
+//extern "C" {
+//
+//}
+//#endif // __cplusplus
+
+#include <glog/logging.h>
+
+#include <gflags/gflags.h>
+
 #endif //PCH_H

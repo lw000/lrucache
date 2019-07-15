@@ -16,6 +16,15 @@
     <Filter Include="cache">
       <UniqueIdentifier>{b39e78b5-5f7c-4d10-930e-63cd8af26e8e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="glog">
+      <UniqueIdentifier>{d0635571-6d63-4bad-802e-7b843cbd9a56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gflags">
+      <UniqueIdentifier>{2c6bf068-94cc-45f9-8989-1b63565c798c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{8ebfdb4c-ed1e-4141-9050-e50560b1762e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -23,6 +32,48 @@
     </ClInclude>
     <ClInclude Include="Cache.h">
       <Filter>cache</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskQueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleFlight.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="glog\glog\logging.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+    <ClInclude Include="glog\glog\raw_logging.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+    <ClInclude Include="glog\glog\stl_logging.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+    <ClInclude Include="glog\glog\vlog_is_on.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+    <ClInclude Include="gflags\gflags\defines.h">
+      <Filter>gflags</Filter>
+    </ClInclude>
+    <ClInclude Include="gflags\gflags\gflags.h">
+      <Filter>gflags</Filter>
+    </ClInclude>
+    <ClInclude Include="gflags\gflags\gflags_completions.h">
+      <Filter>gflags</Filter>
+    </ClInclude>
+    <ClInclude Include="gflags\gflags\gflags_declare.h">
+      <Filter>gflags</Filter>
+    </ClInclude>
+    <ClInclude Include="gflags\gflags\gflags_gflags.h">
+      <Filter>gflags</Filter>
+    </ClInclude>
+    <ClInclude Include="Defer.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="Ticker.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="SignalHandler.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +85,18 @@
     </ClCompile>
     <ClCompile Include="Cache.cpp">
       <Filter>cache</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskQueue.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleFlight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Ticker.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="SignalHandler.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
