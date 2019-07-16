@@ -3,7 +3,7 @@
 
 #include "pch.h"
 #include <iostream>
-#include <thread>
+
 #include <future>
 #include <csignal>
 
@@ -14,10 +14,17 @@
 
 const int TestThreadCount = 20;
 
+DEFINE_bool(is, true, "");
+DEFINE_string(str, "levi", "");
+DEFINE_int32(port, 6379, "port");
+DEFINE_string(ip, "127.0.0.1", "ip adress");
+
+std::once_flag flag;
+
 class HelloFunctionObject {
 public:
 	std::string operator()(const std::string& s) const {
-		return "Hello C++11 from" + s + ".";
+		return "Hello C++11 from " + s + ".";
 	}
 };
 
@@ -31,16 +38,13 @@ public:
 	}
 public:
 	virtual void run() override {
-		//std::cout << " thread_id " << std::this_thread::get_id() << " printTask " << std::endl;
-		LOG(INFO) << " thread_id " << std::this_thread::get_id() << " printTask " << std::endl;
+		LOG(INFO) << " printTask ";
+
+		std::call_once(flag, []() {
+			LOG(INFO) << "called once";
+		});
 	}
 };
-
-DEFINE_bool(is, true, "");
-DEFINE_string(str, "levi", "");
-DEFINE_int32(port, 6379, "port");
-DEFINE_string(ip, "127.0.0.1", "ip adress");
-
 
 bool ValidatePort(const char*flagname, int32_t val) {
 	if (val > 0 && val < 32768) {
@@ -55,9 +59,10 @@ void handleUserInterrupt(int signo) {
 	}
 }
 
+
 int main(int argc, char * argv[])
 {
-	::signal(SIGINT, handleUserInterrupt);
+	//::signal(SIGINT, handleUserInterrupt);
 
 	Defer defer([]() {
 		google::ShutdownGoogleLogging();
@@ -70,12 +75,22 @@ int main(int argc, char * argv[])
 
 	}
 
-	LOG(INFO) << "port " << FLAGS_port << std::endl;
-	LOG(INFO) << "ip " << FLAGS_ip << std::endl;
+	DLOG(INFO) << "port " << FLAGS_port;
+	DLOG(INFO) << "ip " << FLAGS_ip;
 
+	LOG_IF(INFO, 20 > 10) << "log if test";
+
+	google::InstallFailureSignalHandler();
 	google::InitGoogleLogging(argv[0]);
 	
-	google::SetLogDestination(google::GLOG_INFO, "./log");
+	FLAGS_max_log_size = 10;
+
+	google::SetLogDestination(google::GLOG_INFO, "log/log_");
+	google::SetStderrLogging(google::GLOG_INFO);
+
+	//CHECK(1 == 2) << "fail";
+	LOG(ERROR) << "error info";
+	//LOG(FATAL) << "fatal info";
 
 	if (FLAGS_is) {
 		LOG(INFO) << FLAGS_is;
@@ -105,6 +120,12 @@ int main(int argc, char * argv[])
 		}
 	}
 
+	for (auto v : s2) {
+		if (v != nullptr) {
+			LOG(INFO) << v->e.a << std::endl;
+		}
+	}
+
 	cache.Remove({ "1", "2", "3" });
 
 	std::async([](const std::string &s) -> std::string {
@@ -126,8 +147,8 @@ int main(int argc, char * argv[])
 	std::thread t[TestThreadCount];
 	for (int i = 0; i < TestThreadCount; i++) {
 		t[i] = std::thread([&queue]() {
-			for (int i = 0; i < 1000; i++) {
-				std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			for (int i = 0; i < 10000; i++) {
+				//std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 				queue.addTask(new PrintTask(std::to_string(i)));
 			}
 		});

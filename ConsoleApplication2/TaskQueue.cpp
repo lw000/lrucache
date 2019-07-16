@@ -43,11 +43,8 @@ void TaskQueue::removeTask(Task * task) {
 void TaskQueue::run(int workerId) {
 	Defer defer({ [workerId]() {
 		printf("%d exit\n", workerId);
-	} ,[workerId]() {
-		printf("%d exit\n", workerId);
-	} ,[workerId]() {
-		printf("%d exit\n", workerId);
 	} });
+
 	do
 	{
 		Task * task = nullptr;
