@@ -25,6 +25,9 @@
     <Filter Include="common">
       <UniqueIdentifier>{8ebfdb4c-ed1e-4141-9050-e50560b1762e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="cJSON">
+      <UniqueIdentifier>{cbbca99f-bb26-4c7c-be7d-260e298714dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -75,6 +78,15 @@
     <ClInclude Include="SignalHandler.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="cJSON\cJSON.h">
+      <Filter>cJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="cJSON\cJSON_Utils.h">
+      <Filter>cJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="Ldb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -97,6 +109,12 @@
     </ClCompile>
     <ClCompile Include="SignalHandler.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cJSON\cJSON.c">
+      <Filter>cJSON</Filter>
+    </ClCompile>
+    <ClCompile Include="cJSON\cJSON_Utils.c">
+      <Filter>cJSON</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

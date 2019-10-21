@@ -17,6 +17,8 @@
 #include <thread>
 #include <mutex>
 
+#include <queue>
+
 //#ifdef __cplusplus
 //extern "C" {
 //

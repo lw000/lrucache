@@ -84,14 +84,15 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>.;./glog;./gflags;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;./glog;./gflags;./cJSON;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -155,6 +156,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Cache.h" />
+    <ClInclude Include="cJSON\cJSON.h" />
+    <ClInclude Include="cJSON\cJSON_Utils.h" />
     <ClInclude Include="Defer.h" />
     <ClInclude Include="gflags\gflags\defines.h" />
     <ClInclude Include="gflags\gflags\gflags.h" />
@@ -165,6 +168,7 @@
     <ClInclude Include="glog\glog\raw_logging.h" />
     <ClInclude Include="glog\glog\stl_logging.h" />
     <ClInclude Include="glog\glog\vlog_is_on.h" />
+    <ClInclude Include="Ldb.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SignalHandler.h" />
     <ClInclude Include="SingleFlight.h" />
@@ -173,6 +177,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cache.cpp" />
+    <ClCompile Include="cJSON\cJSON.c" />
+    <ClCompile Include="cJSON\cJSON_Utils.c" />
     <ClCompile Include="ConsoleApplication2.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

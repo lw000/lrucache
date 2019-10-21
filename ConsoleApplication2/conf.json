@@ -1,0 +1,27 @@
+{
+    "Debug": 0,
+    "count": 1,
+    "millisecond": 5,
+    "method": "post",
+    "tls": false,
+    "http": {
+        "get": "http://47.110.251.55:9090/api/h5",
+        "get_": "http://127.0.0.1:9090/api/h5",
+        "post": "http://47.110.251.55:9090/api/app",
+        "post_": "http://127.0.0.1:9090/api/app",
+        "post__": "http://serv.acgcy.com/api/app",
+        "post___": "http://192.168.1.201:9090/api/app",
+        "post____": "http://47.96.137.23:9090/api/app"
+    },
+    "https": {
+        "get": "https://192.168.1.73:19090/api/app",
+        "post": "https://www.tuyue.com:19090/api/app"
+    },
+    "account": {
+        "mac": "0387A35138B8230BD1A65940EB53C457",
+        "account": "lwstar2222",
+        "platform": "1",
+        "canal": "1007",
+        "type": "0"
+    }
+}
